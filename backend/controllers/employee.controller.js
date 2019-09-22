@@ -1,6 +1,7 @@
 const EmployeeDao = require('../dao/employee.dao');
 const getJoke = require('../services/jokes.service');
 const getQuote = require('../services/quotes.service');
+const { ROLE_CEO } = require('../config/constants');
 
 // eslint-disable-next-line consistent-return
 exports.create = async (req, res) => {
@@ -22,7 +23,7 @@ exports.create = async (req, res) => {
     favoriteQuote: quote,
   };
 
-  if (employee.role === 'CEO') {
+  if (employee.role === ROLE_CEO) {
     const ceoExists = await EmployeeDao.doesCEOExist();
     if (ceoExists) {
       return res.status(400).send({

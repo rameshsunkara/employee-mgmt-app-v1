@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const dayjs = require('dayjs');
-
-const ROLE_CEO = 'CEO';
-const EMPLOYEE_ROLES = [ROLE_CEO, 'VP', 'MANAGER', 'LACKEY'];
+const { DEFAULT_DATE_FORMAT, EMPLOYEE_ROLES } = require('../config/constants');
 
 const { Schema } = mongoose;
 
@@ -24,9 +22,8 @@ const employeeSchema = new Schema(
       required: [true, 'Hire Date is a required field'],
       validate: {
         validator: hireDate => {
-          // TODO: Make Date Format Configurable
           if (
-            dayjs(hireDate, { format: 'YYYY-MM-DD' }).isValid() &&
+            dayjs(hireDate, { format: DEFAULT_DATE_FORMAT }).isValid() &&
             dayjs().isAfter(dayjs(hireDate))
           ) {
             return Promise.resolve(true);
