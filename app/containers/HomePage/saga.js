@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import request from 'utils/request';
-import { LOAD_EMPLOYEES } from './constants';
+import { LOAD_EMPLOYEES, ADD_EMPLOYEE } from './constants';
 import { employeesLoaded, employeesLoadingError } from './actions';
 
 const requestURL = 'http://localhost:3000/api/employees/';

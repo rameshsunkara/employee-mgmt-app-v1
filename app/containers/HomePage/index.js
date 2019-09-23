@@ -23,7 +23,6 @@ export function HomePage({
   error,
   employees,
   getEmployeesList,
-  createNewEmployee,
 }) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
@@ -37,13 +36,6 @@ export function HomePage({
   return (
     <React.Fragment>
       <h2>Employee List</h2>
-      <form onSubmit={createNewEmployee}>
-        <label>
-          Name:
-          <input type="text" value="Sample" />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
       <EmployeeList loading={loading} error={error} employees={employees} />
     </React.Fragment>
   );
@@ -54,7 +46,6 @@ HomePage.propTypes = {
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   employees: PropTypes.array,
   getEmployeesList: PropTypes.func,
-  createNewEmployee: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -66,9 +57,6 @@ const mapStateToProps = createStructuredSelector({
 export function mapDispatchToProps(dispatch) {
   return {
     getEmployeesList: () => {
-      dispatch(loadEmployees());
-    },
-    createNewEmployee: () => {
       dispatch(loadEmployees());
     },
   };
