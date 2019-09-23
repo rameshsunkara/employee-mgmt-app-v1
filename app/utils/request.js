@@ -1,3 +1,6 @@
+const axios = require('axios');
+
+const servicer = axios.create();
 /**
  * Parses the JSON returned by a network request
  *
@@ -39,6 +42,13 @@ function checkStatus(response) {
  */
 export default function request(url, options) {
   return fetch(url, options)
+    .then(checkStatus)
+    .then(parseJSON);
+}
+
+export function post(url, options) {
+  return servicer
+    .post(url, options)
     .then(checkStatus)
     .then(parseJSON);
 }

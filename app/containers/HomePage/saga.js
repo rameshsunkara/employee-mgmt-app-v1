@@ -3,9 +3,9 @@ import request from 'utils/request';
 import { LOAD_EMPLOYEES } from './constants';
 import { employeesLoaded, employeesLoadingError } from './actions';
 
-export function* getEmployees() {
-  const requestURL = 'http://localhost:3000/api/employees/';
+const requestURL = 'http://localhost:3000/api/employees/';
 
+export function* getEmployees() {
   try {
     const employees = yield call(request, requestURL);
     yield put(employeesLoaded(employees.results));

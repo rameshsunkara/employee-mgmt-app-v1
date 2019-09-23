@@ -5,21 +5,23 @@
 git clone --depth=1 https://github.com/rameshsunkara/employee-mgmt-app-v1.git
 ```
 
-2. Setup
+1. `cd employee-mgmt-app-v1`
+
+1. Install Node Modules
 
 ```text
-npm run setup
+npm ci
 ```
 
-3. Make Sure Port `270171` is open by visiting `http://portquiz.net:27017`
+1. Make Sure Port `270171` is open by visiting `http://portquiz.net:27017`
    This port is used for MongoDB connection.
    
-4. Start the App
+1. Start the App
 ```text
 npm start
 ```
 
-5. Run in Developer Mode
+1. Run in Developer Mode
 
 This requires `nodemon`
 Install `nodemon` using `npm i nodemon -g`
