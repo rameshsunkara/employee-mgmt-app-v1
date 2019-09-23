@@ -1,38 +1,36 @@
 ## Running instructions
 
 1. Clone the repo
-```text
-git clone --depth=1 https://github.com/rameshsunkara/employee-mgmt-app-v1.git
-```
+      ```text
+      git clone --depth=1 https://github.com/rameshsunkara/employee-mgmt-app-v1.git
+      ```
 
 1. `cd employee-mgmt-app-v1`
 
 1. Install Node Modules
 
-```text
-npm ci
-```
+    ```text
+    npm ci
+    ```
 
 1. Make Sure Port `270171` is open by visiting `http://portquiz.net:27017`
    This port is used for MongoDB connection.
    
 1. Start the App
-```text
-npm start
-```
+      ```text
+      npm start
+      ```
 
-1. Run in Developer Mode
+1. Run in Developer Mode. This requires **nodemon**.
 
-This requires `nodemon`
-Install `nodemon` using `npm i nodemon -g`
-
-```text
-npm run dev
-```
+    ```text
+    npm i nodemon -g
+    npm run dev
+    ```
 
 ## Code
-- UI code is in `app` folder
-- Backend code is `backend` folder
+- Refer [UI code](./app)
+- Refer [Backend Code](./backend)
 
 ## Testing
 
@@ -50,4 +48,13 @@ npm run dev
 - [] Fully externalize DB config
 - [] Resilient DB Connections
 - [] Cleanup UI Code
+- [] Add Create Button
+
+## References
+
+- BoilerPlate: [react-boilerplate](https://github.com/react-boilerplate/react-boilerplate)
+- MongoClient: [Mongoose](https://mongoosejs.com/)
+- [MongoDB Cloud](https://cloud.mongodb.com)
+
+
 
