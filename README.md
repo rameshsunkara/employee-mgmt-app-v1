@@ -5,7 +5,10 @@
       git clone --depth=1 https://github.com/rameshsunkara/employee-mgmt-app-v1.git
       ```
 
-1. `cd employee-mgmt-app-v1`
+1. Change directory to the cloned repoistory
+      ```text
+      cd employee-mgmt-app-v1
+      ```
 
 1. Install Node Modules
 
@@ -13,8 +16,7 @@
     npm ci
     ```
 
-1. Make Sure Port `270171` is open by visiting `http://portquiz.net:27017`
-   This port is used for MongoDB connection.
+1. Make Sure Port **270171** is open by visiting [http://portquiz.net:27017](http://portquiz.net:27017) as it is used for MongoDB connection.
    
 1. Start the App
       ```text
@@ -37,9 +39,11 @@
 1. Visit `http://localhost:3000/` in your browser
     - Shows List of Employees by fetching data from MongoDB hosted in Cloud.
     - Request `GET http://localhost:3000/api/employees/`
-     
-1. Create a New Employee by filling in required data and click Create Button
-   - Request `POST http://localhost:3000/api/employees/`
+
+1. Other End Points
+    - `GET http://localhost:3000/api/employees/:id`
+    - `PUT http://localhost:3000/api/employees/:id`
+    - `DELETE http://localhost:3000/api/employees/:id`
 
 ## TODO
 
