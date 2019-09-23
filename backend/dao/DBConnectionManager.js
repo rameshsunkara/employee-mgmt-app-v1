@@ -6,6 +6,7 @@ const chalk = require('chalk');
 
 // require database URL from properties file
 const dbURL = require('../config/application-properties').DB;
+const { MongoConnectionProps } = require('./dbconfig');
 
 const connected = chalk.bold.cyan;
 const error = chalk.bold.yellow;
@@ -13,8 +14,12 @@ const disconnected = chalk.bold.red;
 const termination = chalk.bold.magenta;
 
 // export this function and imported by server.js
-module.exports = () => {
-  mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true });
+module.exports = async () => {
+  try {
+    await mongoose.connect(dbURL, MongoConnectionProps);
+  } catch (err) {
+    console.log(error(`Unable to establish connection to MongoDB ${err}`));
+  }
 
   mongoose.connection.on('connected', function() {
     console.log(connected('Mongoose default connection is open to ', dbURL));
