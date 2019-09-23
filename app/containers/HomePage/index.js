@@ -1,15 +1,62 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
-import EmployeeList from '../../components/EmployeeList';
+import React, { useEffect, memo } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
 
-export default function HomePage() {
-  return (
-    <React.Fragment>
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
-      <EmployeeList data={[{ firstName: 'ramesh' }]} />
-    </React.Fragment>
-  );
+import { useInjectReducer } from 'utils/injectReducer';
+import { useInjectSaga } from 'utils/injectSaga';
+import EmployeeList from '../../components/EmployeeList';
+import {
+  makeSelectEmployees,
+  makeSelectLoading,
+  makeSelectError,
+} from './selectors';
+import reducer from './reducer';
+import saga from './saga';
+import { loadEmployees } from './actions';
+
+const key = 'home';
+
+export function HomePage({ loading, error, employees, getEmployeesList }) {
+  console.log('Props:', employees, loading, error);
+  useInjectReducer({ key, reducer });
+  useInjectSaga({ key, saga });
+
+  useEffect(() => {
+    if (!loading) getEmployeesList();
+  }, []);
+
+  return <EmployeeList loading={loading} error={error} employees={employees} />;
 }
+
+HomePage.propTypes = {
+  loading: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  employees: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  getEmployeesList: PropTypes.func,
+};
+
+const mapStateToProps = createStructuredSelector({
+  employees: makeSelectEmployees(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
+});
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    getEmployeesList: () => {
+      dispatch(loadEmployees());
+    },
+  };
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default compose(
+  withConnect,
+  memo,
+)(HomePage);

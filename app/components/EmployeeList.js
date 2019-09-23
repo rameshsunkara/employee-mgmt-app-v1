@@ -10,15 +10,23 @@ const columns = [
   },
 ];
 
-const EmployeeList = ({ data }) => {
-  if (data && data.length <= 0) {
+const EmployeeList = props => {
+  const { loading, error, employees } = props || {};
+  console.log('In List:', props);
+  if (!employees || (employees && employees.length <= 0)) {
     return 'No Employees';
   }
-  return <ReactTable data={data} columns={columns} />;
+
+  if (error) {
+    return 'Error Loading Employee Data';
+  }
+  return <ReactTable data={employees} columns={columns} loading={loading} />;
 };
 
 EmployeeList.propTypes = {
-  data: PropTypes.any,
+  employees: PropTypes.any,
+  loading: PropTypes.bool,
+  error: PropTypes.any,
 };
 
 export default EmployeeList;
