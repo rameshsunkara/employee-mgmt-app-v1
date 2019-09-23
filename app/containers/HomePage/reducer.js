@@ -9,6 +9,7 @@ import {
 // The initial state of the App
 export const initialState = {
   loading: false,
+  loaded: false,
   error: false,
   employees: undefined,
 };
@@ -25,11 +26,11 @@ const employeeReducer = (state = initialState, action) =>
       case LOAD_EMPLOYEE_SUCCESS:
         draft.employees = action.employees;
         draft.loading = false;
+        draft.loaded = true;
         break;
 
       case LOAD_EMPLOYEE_ERROR:
         draft.error = action.error;
-        draft.loading = false;
         break;
 
       case RESET:

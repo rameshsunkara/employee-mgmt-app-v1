@@ -1,29 +1,24 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
-const selectGlobal = state => state || initialState;
+const selectHome = state => state.home || initialState;
 
 const makeSelectLoading = () =>
   createSelector(
-    selectGlobal,
-    globalState => globalState.loading,
+    selectHome,
+    homeState => homeState.loading,
   );
 
 const makeSelectError = () =>
   createSelector(
-    selectGlobal,
-    globalState => globalState.error,
+    selectHome,
+    homeState => homeState.error,
   );
 
 const makeSelectEmployees = () =>
   createSelector(
-    selectGlobal,
-    globalState => (globalState.home && globalState.home.employees) || {},
+    selectHome,
+    homeState => homeState.employees,
   );
 
-export {
-  selectGlobal,
-  makeSelectLoading,
-  makeSelectError,
-  makeSelectEmployees,
-};
+export { selectHome, makeSelectLoading, makeSelectError, makeSelectEmployees };

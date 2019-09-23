@@ -19,12 +19,11 @@ import { loadEmployees } from './actions';
 const key = 'home';
 
 export function HomePage({ loading, error, employees, getEmployeesList }) {
-  console.log('Props:', employees, loading, error);
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
 
   useEffect(() => {
-    if (!loading) getEmployeesList();
+    if (!employees) getEmployeesList();
   }, []);
 
   return <EmployeeList loading={loading} error={error} employees={employees} />;
@@ -33,7 +32,7 @@ export function HomePage({ loading, error, employees, getEmployeesList }) {
 HomePage.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  employees: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  employees: PropTypes.array,
   getEmployeesList: PropTypes.func,
 };
 
