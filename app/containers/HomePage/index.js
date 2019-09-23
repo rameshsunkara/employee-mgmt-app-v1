@@ -23,10 +23,17 @@ export function HomePage({ loading, error, employees, getEmployeesList }) {
   useInjectSaga({ key, saga });
 
   useEffect(() => {
-    if (!employees) getEmployeesList();
+    if (!employees) {
+      getEmployeesList();
+    }
   }, []);
 
-  return <EmployeeList loading={loading} error={error} employees={employees} />;
+  return (
+    <React.Fragment>
+      <h2>Employee List</h2>
+      <EmployeeList loading={loading} error={error} employees={employees} />
+    </React.Fragment>
+  );
 }
 
 HomePage.propTypes = {

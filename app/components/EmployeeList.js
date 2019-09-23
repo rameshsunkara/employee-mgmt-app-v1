@@ -5,14 +5,24 @@ import 'react-table/react-table.css';
 
 const columns = [
   {
-    Header: 'Name',
+    Header: 'First Name',
     accessor: 'firstName',
+  },
+  {
+    Header: 'Last Name',
+    accessor: 'lastName',
+  },
+  {
+    Header: 'Role',
+    accessor: 'role',
+  },
+  {
+    Header: 'Hire Date',
+    accessor: 'hireDate',
   },
 ];
 
-const EmployeeList = props => {
-  const { loading, error, employees } = props || {};
-  console.log('In List:', props);
+const EmployeeList = ({ loading, error, employees }) => {
   if (!employees || (employees && employees.length <= 0)) {
     return 'No Employees';
   }
@@ -20,7 +30,11 @@ const EmployeeList = props => {
   if (error) {
     return 'Error Loading Employee Data';
   }
-  return <ReactTable data={employees} columns={columns} loading={loading} />;
+  return (
+    <div style={{ margin: 50 }}>
+      <ReactTable data={employees} columns={columns} loading={loading} />
+    </div>
+  );
 };
 
 EmployeeList.propTypes = {
