@@ -62,7 +62,11 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const employee = {
     firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    hireDate: req.body.hireDate,
     role: req.body.role,
+    favoriteJoke: req.body.joke,
+    favoriteQuote: req.body.quote,
   };
   EmployeeDao.update({ _id: req.params.id }, employee, function(err, results) {
     if (err) {

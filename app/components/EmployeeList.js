@@ -20,6 +20,14 @@ const columns = [
     Header: 'Hire Date',
     accessor: 'hireDate',
   },
+  {
+    Header: 'Favorite Quote',
+    accessor: 'favoriteQuote',
+  },
+  {
+    Header: 'Favorite Joke',
+    accessor: 'favoriteJoke',
+  },
 ];
 
 const EmployeeList = ({ loading, error, employees }) => {
