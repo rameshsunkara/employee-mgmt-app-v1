@@ -2,6 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const { resolve } = require('path');
 const logger = require('./logger');
 
@@ -22,6 +23,7 @@ const bodyParserURLEncoded = bodyParser.urlencoded({ extended: true });
 
 app.use(bodyParserJSON);
 app.use(bodyParserURLEncoded);
+app.use(morgan('dev'));
 
 app.use('/api', router);
 employeeRoutes(router);

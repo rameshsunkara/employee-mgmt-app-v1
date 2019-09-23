@@ -5,6 +5,11 @@
 git clone --depth=1 
 ```
 
+1. Setup
+
+```text
+npm run setup
+```
 1. Start the App
 ```text
 npm start
@@ -16,7 +21,7 @@ This requires `nodemon`
 Install `nodemon` using `npm i nodemon -g`
 
 ```text
-npm dev
+npm run dev
 ```
 
 ## Code

@@ -1,5 +1,5 @@
 {
-  "name": "Employee Management App",
+  "name": "EmployeeManagementApp",
   "version": "4.0.0",
   "description": "Simple CRUD Operation on Employee",
   "repository": {
@@ -81,6 +81,7 @@
     "lodash": "4.17.11",
     "minimist": "1.2.0",
     "mongoose": "^5.7.1",
+    "morgan": "^1.9.1",
     "prop-types": "15.7.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",

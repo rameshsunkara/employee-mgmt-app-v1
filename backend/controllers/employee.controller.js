@@ -50,7 +50,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  EmployeeDao.get({ name: req.params.id }, function(err, results) {
+  EmployeeDao.get({ _id: req.params.id }, function(err, results) {
     if (err) {
       res.json({ error: err });
     }
@@ -58,7 +58,6 @@ exports.findOne = (req, res) => {
   });
 };
 
-// TODO: Fix update
 exports.update = (req, res) => {
   const employee = {
     firstName: req.body.firstName,
