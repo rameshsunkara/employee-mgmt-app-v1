@@ -2,7 +2,7 @@
 
 1. Clone the repo
 ```text
-git clone --depth=1 
+git clone --depth=1 https://github.com/rameshsunkara/employee-mgmt-app-v1.git
 ```
 
 2. Setup
