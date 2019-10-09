@@ -1,0 +1,12 @@
+{
+  "_id": "5d88490181900cd45c6009b1",
+  "firstName": "Ramesh",
+  "lastName": "Sunkara",
+  "hireDate": "2019-02-30",
+  "role": "MANAGER",
+  "favoriteJoke": "The phrase 'dead ringer' refers to someone who sits behind Chuck Norris in a movie theater and forgets to turn their cell phone off.",
+  "favoriteQuote": "Fish, for sport only, not for meat. Fish meat is practically a vegetable.",
+  "createdAt": "2019-09-23T04:24:33.717Z",
+  "updatedAt": "2019-09-23T04:24:33.717Z",
+  "__v": 0
+}

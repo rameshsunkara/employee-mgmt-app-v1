@@ -22,10 +22,7 @@ const employeeSchema = new Schema(
       required: [true, 'Hire Date is a required field'],
       validate: {
         validator: hireDate => {
-          if (
-            dayjs(hireDate, { format: DEFAULT_DATE_FORMAT }).isValid() &&
-            dayjs().isAfter(dayjs(hireDate))
-          ) {
+          if (isValidHireDate(hireDate)) {
             return Promise.resolve(true);
           }
           return Promise.resolve(false);
@@ -59,5 +56,23 @@ const employeeSchema = new Schema(
     timestamps: true,
   },
 );
+
+// Util
+const isValidHireDate = hireDate =>
+  dayjs(hireDate, { format: DEFAULT_DATE_FORMAT }).isValid() &&
+  dayjs().isAfter(dayjs(hireDate)) &&
+  isValidDate(hireDate);
+
+function isValidDate(hireDate) {
+  const d = new Date(hireDate);
+  if (
+    d.getFullYear() === hireDate.split('-')[0] &&
+    d.getMonth() === hireDate.split('-')[1] &&
+    d.getDate() === hireDate.split('-')[2]
+  ) {
+    return true;
+  }
+  return false;
+}
 
 module.exports = employeeSchema;
